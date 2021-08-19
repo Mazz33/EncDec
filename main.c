@@ -3,12 +3,8 @@
 #include <string.h>
 #include <ctype.h>
 
-enum Ciphers {
-	CEASER_CIPHER
-};
-
-char* ceaser(char*, int);
-int verifyArg(int, char*, int);
+#include "ciphers.h"
+#include "checker.h"
 
 int main(int argc, char** argv)
 {
