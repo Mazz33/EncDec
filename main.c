@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 	char *inp = malloc(1024);
 	strcpy(inp, argv[1]);
 	int key = atoi(argv[2]);
-	char *ciph = ceaser(inp, key);
+	char *ciph = atbash(inp);
 	puts(ciph);
 
 	free(inp);

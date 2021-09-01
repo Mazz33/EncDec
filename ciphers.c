@@ -8,17 +8,16 @@ char *replace_str(char *baseStr, char *pattern, char *replacement)
         return NULL;
 
     char *result = malloc(1024); //TODO: calculate result size needed.
-    size_t lenPattern = strlen(pattern);
     if (!replacement)
         replacement = "";
     int shouldReplace = FALSE;
     size_t lenReplacement = strlen(replacement);
-    for (size_t i = 0; !baseStr[i]; i++)
+    for (size_t i = 0; baseStr[i]; i++)
     {
         if (baseStr[i] == pattern[i])
         {
             shouldReplace = TRUE;
-            for (size_t j = 0, k = i; !pattern[j]; j++, k++)
+            for (size_t j = 0, k = i; pattern[j]; j++, k++)
             {
                 if (baseStr[k] != pattern[j])
                 {
@@ -28,7 +27,7 @@ char *replace_str(char *baseStr, char *pattern, char *replacement)
             }
             if (shouldReplace)
             {
-                for (size_t j = 0; j < lenReplacement; j++)
+                for (size_t j = 0; replacement[j]; j++)
                 {
                     result[i] = replacement[j];
                 }
@@ -55,7 +54,7 @@ char *ceaser(char *plain, int key)
         return cipher;
     }
 
-    for (int i = 0; i < strlen(plain) + 1; i++)
+    for (size_t i = 0; plain[i]; i++)
     {
         if (!isalpha(plain[i]))
         {
@@ -76,21 +75,24 @@ char *ceaser(char *plain, int key)
 
 char *atbash(char *plain)
 {
-    char *decKey = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    char *encKey = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
+    char *decKey = "abcdefghijklmnopqrstuvwxyz";
+    char *encKey = "zyxwvutsrqponmlkjihgfedcba";
 
     char *cipherText = malloc(strlen(plain) + 1);
-    for (size_t i = 0; !(*plain); i++)
+    size_t i;
+    for (i = 0; plain[i]; i++)
     {
-        for (size_t j = 0; !(*decKey); j++)
+        if (isupper(plain[i]))
+            plain[i] += 32;
+        for (size_t j = 0; decKey[j]; j++)
         {
             if (plain[i] == decKey[j])
             {
-                cipherText += encKey[j];
+                cipherText[i] = encKey[j];
                 break;
             }
         }
     }
-
+    cipherText[i] = '\0';
     return cipherText;
 }
