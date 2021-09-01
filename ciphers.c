@@ -1,5 +1,19 @@
 #include "ciphers.h"
 
+char *replace_str(char *baseStr, char *pattern, char *replacement)
+{
+    if (!baseStr || !pattern)
+        return NULL;
+    if (!strlen(baseStr) || !strlen(pattern))
+        return NULL;
+
+    char *result;
+    size_t lenPattern = strlen(pattern);
+    if (!replacement)
+        replacement = "";
+    size_t lenReplacement = strlen(replacement);
+}
+
 char *ceaser(char *plain, int key)
 {
     char *cipher = malloc(strlen(plain) + 1);
@@ -26,4 +40,25 @@ char *ceaser(char *plain, int key)
         }
     }
     return cipher;
+}
+
+char *atbash(char *plain)
+{
+    char *decKey = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    char *encKey = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
+
+    char *cipherText = malloc(strlen(plain) + 1);
+    for (size_t i = 0; !(*plain); i++)
+    {
+        for (size_t j = 0; !(*decKey); j++)
+        {
+            if (plain[i] == decKey[j])
+            {
+                cipherText += encKey[j];
+                break;
+            }
+        }
+    }
+
+    return cipherText;
 }
