@@ -1,9 +1,7 @@
 #ifndef BIG_CHECKER
 #define BIG_CHECKER
 
-#include <string.h>
-#include <ctype.h>
-#include <stdlib.h>
+#include "headers.h"
 
 //Argument types return types
 #define GOOD 1
