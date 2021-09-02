@@ -3,9 +3,9 @@
 char *replace_str(char *baseStr, char *pattern, char *replacement)
 {
     if (!baseStr || !pattern)
-        return NULL;
+        return '\0';
     if (!strlen(baseStr) || !strlen(pattern))
-        return NULL;
+        return '\0';
 
     char *result = malloc(1024); //TODO: calculate result size needed.
     if (!replacement)

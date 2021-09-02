@@ -4,7 +4,7 @@
 int getRealArgc(char **argv)
 {
     int realArgc = 0;
-    for (size_t i = 0; argv[i]; i++)
+    for (size_t i = 0; argv[i] != '\0'; i++)
     {
         if (argv[i][0] == '-')
             continue;
@@ -17,7 +17,7 @@ char ***parseArgs(int argc, char **argv)
 {
     if (argc == 0)
     {
-        return NULL;
+        return '\0';
     }
     size_t arraySize = sizeof(char *) * argc;
     char ***arrOfArgvs = malloc(arraySize * 2); //a 2d array containing 2 arrays, first is the command line options, second is values passed to give to the verifier
@@ -26,11 +26,11 @@ char ***parseArgs(int argc, char **argv)
     if (!arrOfArgvs) {
         puts("Error, Can't assign memory");
         free(arrOfArgvs);
-        return NULL;
+        return '\0';
     }
     unsigned optionsCounter = 0, valuesCounter = 0;
     size_t i;
-    for (i = 1; argv[i]; i++)
+    for (i = 1; argv[i] != '\0'; i++)
     {
         if (argv[i][0] == '-')
         {
@@ -45,8 +45,8 @@ char ***parseArgs(int argc, char **argv)
             valuesCounter++;
         }
     }
-    arrOfArgvs[0][optionsCounter] = NULL;
-    arrOfArgvs[1][valuesCounter] = NULL;
+    arrOfArgvs[0][optionsCounter] = '\0';
+    arrOfArgvs[1][valuesCounter] = '\0';
 
     return arrOfArgvs;
 }
