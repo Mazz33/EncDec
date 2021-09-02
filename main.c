@@ -1,10 +1,17 @@
 #include "headers.h"
 #include "ciphers.h"
 #include "checker.h"
+#include "handler.h"
 
 int main(int argc, char **argv)
 {
-	int verifier = verifyArg(argc, argv, CEASER_CIPHER);
+	int realArgc = getRealArgc(argv);
+	char ***splitArgs = parseArgs(argc, argv);
+	if (!splitArgs)
+		return INVALID_NUMBER_OF_ARGUMENTS;
+	char **optionsArgv = splitArgs[0];
+	char **valuesArgv = splitArgs[1];
+	int verifier = verifyArg(realArgc, argv, CEASER_CIPHER);
 	switch (verifier)
 	{
 	case GOOD:
@@ -33,6 +40,12 @@ int main(int argc, char **argv)
 	char *ciph = atbash(inp);
 	puts(ciph);
 
+	puts("1");
+	free(optionsArgv);
+	puts("2");
+	free(valuesArgv);
+	puts("3");
+	free(splitArgs);
 	free(inp);
 	free(ciph);
 	return 0;

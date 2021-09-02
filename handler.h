@@ -3,7 +3,9 @@
 
 #include "headers.h"
 
-int getRealArgc(char**);
-char** getPassedArguments(int, char**);
+int getRealArgc(char **);
+char **getPassedArguments(int, char **);
+char **getProgramOptions(int, char **);
+char ***parseArgs(int, char **);
 
 #endif
