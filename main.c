@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 		return INVALID_NUMBER_OF_ARGUMENTS;
 	char **optionsArgv = splitArgs[0];
 	char **valuesArgv = splitArgs[1];
-	int verifier = verifyArg(realArgc, argv, CEASER_CIPHER);
+	int verifier = verifyArg(realArgc, valuesArgv, CEASER_CIPHER);
 	switch (verifier)
 	{
 	case GOOD:
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 	}
 	char *inp = malloc(1024);
 	strcpy(inp, argv[1]);
-	int key = atoi(argv[2]);
+	// int key = atoi(argv[2]);
 	char *ciph = atbash(inp);
 	puts(ciph);
 

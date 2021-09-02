@@ -45,7 +45,8 @@ char ***parseArgs(int argc, char **argv)
             valuesCounter++;
         }
     }
-    arrOfArgvs[0][optionsCounter] = '\0';
-    arrOfArgvs[1][valuesCounter] = '\0';
+    arrOfArgvs[0][optionsCounter] = NULL;
+    arrOfArgvs[1][valuesCounter] = NULL;
+
     return arrOfArgvs;
 }

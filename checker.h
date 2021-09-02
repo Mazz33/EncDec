@@ -17,7 +17,7 @@
         return INVALID_NUMBER_OF_ARGUMENTS;
 //Assert the string is only numbers for atoi()
 #define ASSERT_NUM(A)                               \
-    for (int Iter_ = 0; Iter_ < strlen(A); Iter_++) \
+    for (size_t Iter_ = 0; A[Iter_] != '\0'; Iter_++) \
     {                                               \
         if (!isdigit(A[Iter_]))                     \
             return WRONG_ARGUMENTS_TYPE;            \

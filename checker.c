@@ -11,10 +11,10 @@ int verifyArg(int argc, char **argv, int cipher)
     switch (cipher)
     {
     case CEASER_CIPHER:
-        ASSERT_ARGC(argc, 3);
-        ASSERT_NUM(argv[2]);
-        ASSERT_SIGN(atoi(argv[2]), 1);
-        ASSERT_SIZE(argv[1], 1023);
+        ASSERT_ARGC(argc, 2);
+        ASSERT_NUM(argv[1]);
+        ASSERT_SIGN(atoi(argv[1]), 1);
+        ASSERT_SIZE(argv[0], 1023);
         return GOOD;
         break;
     default:
