@@ -40,11 +40,16 @@ int main(int argc, char **argv)
 	char *ciph = atbash(inp);
 	puts(ciph);
 
-	puts("1");
+	size_t i = 0;
+	for (i = 0; optionsArgv[i]; i++) {
+		printf("options: %s\n", optionsArgv[i]);
+	}
+	for (i = 0; valuesArgv[i]; i++) {
+		printf("values: %s\n", valuesArgv[i]);
+	}
+
 	free(optionsArgv);
-	puts("2");
 	free(valuesArgv);
-	puts("3");
 	free(splitArgs);
 	free(inp);
 	free(ciph);

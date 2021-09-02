@@ -23,18 +23,25 @@ char ***parseArgs(int argc, char **argv)
     char ***arrOfArgvs = malloc(arraySize * 2); //a 2d array containing 2 arrays, first is the command line options, second is values passed to give to the verifier
     char **options = malloc(arraySize);
     char **values = malloc(arraySize);
+    if (!arrOfArgvs || !options || !values) {
+        puts("Error, Can't assign memory");
+        free(arrOfArgvs); free(options); free(values);
+        return NULL;
+    }
     unsigned optionsCounter = 0, valuesCounter = 0;
     size_t i;
     for (i = 1; argv[i]; i++)
     {
         if (argv[i][0] == '-')
         {
-            values[valuesCounter] = argv[i];
+            options[optionsCounter] = argv[i];
+            puts(options[optionsCounter]);
             optionsCounter++;
         }
         else
         {
             values[valuesCounter] = argv[i];
+            puts(values[valuesCounter]);
             valuesCounter++;
         }
     }
