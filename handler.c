@@ -21,11 +21,11 @@ char ***parseArgs(int argc, char **argv)
     }
     size_t arraySize = sizeof(char *) * argc;
     char ***arrOfArgvs = malloc(arraySize * 2); //a 2d array containing 2 arrays, first is the command line options, second is values passed to give to the verifier
-    char **options = malloc(arraySize);
-    char **values = malloc(arraySize);
-    if (!arrOfArgvs || !options || !values) {
+    arrOfArgvs[0] = malloc(arraySize);
+    arrOfArgvs[1] = malloc(arraySize);
+    if (!arrOfArgvs) {
         puts("Error, Can't assign memory");
-        free(arrOfArgvs); free(options); free(values);
+        free(arrOfArgvs);
         return NULL;
     }
     unsigned optionsCounter = 0, valuesCounter = 0;
@@ -34,22 +34,18 @@ char ***parseArgs(int argc, char **argv)
     {
         if (argv[i][0] == '-')
         {
-            options[optionsCounter] = argv[i];
-            puts(options[optionsCounter]);
+            arrOfArgvs[0][optionsCounter] = malloc(strlen(argv[i]) + 1);
+            strcpy(arrOfArgvs[0][optionsCounter], argv[i]);
             optionsCounter++;
         }
         else
         {
-            values[valuesCounter] = argv[i];
-            puts(values[valuesCounter]);
+            arrOfArgvs[1][valuesCounter] = malloc(strlen(argv[i]) + 1);
+            strcpy(arrOfArgvs[1][valuesCounter], argv[i]);
             valuesCounter++;
         }
     }
-    values[i] = '\0';
-    options[i] = '\0';
-    memcpy(&arrOfArgvs[0], options, optionsCounter);
-    memcpy(&arrOfArgvs[1], values, valuesCounter);
-    free(options);
-    free(values);
+    arrOfArgvs[0][optionsCounter] = '\0';
+    arrOfArgvs[1][valuesCounter] = '\0';
     return arrOfArgvs;
 }
