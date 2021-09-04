@@ -96,3 +96,27 @@ char *atbash(char *plain)
     cipherText[i] = '\0';
     return cipherText;
 }
+
+char *rot13(char *plain)
+{
+    char *decKey = "abcdefghijklmnopqrstuvwxyz";
+    char *encKey = "nopqrstuvwxyzabcdefghijklm";
+
+    char *cipherText = malloc(strlen(plain) + 1);
+    size_t i;
+    for (i = 0; plain[i]; i++)
+    {
+        if (isupper(plain[i]))
+            plain[i] += 32;
+        for (size_t j = 0; decKey[j]; j++)
+        {
+            if (plain[i] == decKey[j])
+            {
+                cipherText[i] = encKey[j];
+                break;
+            }
+        }
+    }
+    cipherText[i] = '\0';
+    return cipherText;
+}

@@ -14,5 +14,6 @@ enum Ciphers
 char *replace_str(char *, char *, char *);
 char *ceaser(char *, int);
 char *atbash(char *);
+char *rot13(char *);
 
 #endif
