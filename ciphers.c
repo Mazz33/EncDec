@@ -101,7 +101,7 @@ char *ceaserDec(char *plain, int key)
     return cipher;
 }
 
-char *atbash(char *plain)
+char *atbashEnc(char *plain)
 {
     char *decKey = "abcdefghijklmnopqrstuvwxyz";
     char *encKey = "zyxwvutsrqponmlkjihgfedcba";
@@ -125,7 +125,31 @@ char *atbash(char *plain)
     return cipherText;
 }
 
-char *rot13(char *plain)
+char *atbashDec(char *plain)
+{
+    char *decKey = "abcdefghijklmnopqrstuvwxyz";
+    char *encKey = "zyxwvutsrqponmlkjihgfedcba";
+
+    char *cipherText = malloc(strlen(plain) + 1);
+    size_t i;
+    for (i = 0; plain[i]; i++)
+    {
+        if (isupper(plain[i]))
+            plain[i] += 32;
+        for (size_t j = 0; encKey[j]; j++)
+        {
+            if (plain[i] == encKey[j])
+            {
+                cipherText[i] = decKey[j];
+                break;
+            }
+        }
+    }
+    cipherText[i] = '\0';
+    return cipherText;
+}
+
+char *rot13Enc(char *plain)
 {
     char *decKey = "abcdefghijklmnopqrstuvwxyz";
     char *encKey = "nopqrstuvwxyzabcdefghijklm";
@@ -141,6 +165,30 @@ char *rot13(char *plain)
             if (plain[i] == decKey[j])
             {
                 cipherText[i] = encKey[j];
+                break;
+            }
+        }
+    }
+    cipherText[i] = '\0';
+    return cipherText;
+}
+
+char *rot13Dec(char *plain)
+{
+    char *decKey = "abcdefghijklmnopqrstuvwxyz";
+    char *encKey = "nopqrstuvwxyzabcdefghijklm";
+
+    char *cipherText = malloc(strlen(plain) + 1);
+    size_t i;
+    for (i = 0; plain[i]; i++)
+    {
+        if (isupper(plain[i]))
+            plain[i] += 32;
+        for (size_t j = 0; encKey[j]; j++)
+        {
+            if (plain[i] == encKey[j])
+            {
+                cipherText[i] = decKey[j];
                 break;
             }
         }

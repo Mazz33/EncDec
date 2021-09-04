@@ -14,7 +14,8 @@ enum Ciphers
 char *replace_str(char *, char *, char *);
 char *ceaserEnc(char *, int);
 char *ceaserDec(char *, int);
-char *atbash(char *);
+char *atbashEnc(char *);
+char *atbashDec(char *);
 char *rot13(char *);
 
 #endif
