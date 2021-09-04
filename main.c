@@ -11,7 +11,12 @@ int main(int argc, char **argv)
 		return INVALID_NUMBER_OF_ARGUMENTS;
 	char **optionsArgv = splitArgs[0];
 	char **valuesArgv = splitArgs[1];
-	int verifier = verifyArg(realArgc, valuesArgv, CEASER_CIPHER);
+	int cipher = getCipher(optionsArgv);
+	if (!cipher)
+	{
+		return INVALID_NUMBER_OF_ARGUMENTS;
+	}
+	int verifier = verifyArg(realArgc, valuesArgv, cipher);
 	switch (verifier)
 	{
 	case GOOD:

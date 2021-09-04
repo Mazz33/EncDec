@@ -23,7 +23,8 @@ char ***parseArgs(int argc, char **argv)
     char ***arrOfArgvs = malloc(arraySize * 2); //a 2d array containing 2 arrays, first is the command line options, second is values passed to give to the verifier
     arrOfArgvs[0] = malloc(arraySize);
     arrOfArgvs[1] = malloc(arraySize);
-    if (!arrOfArgvs) {
+    if (!arrOfArgvs)
+    {
         puts("Error, Can't assign memory");
         free(arrOfArgvs);
         return '\0';
@@ -49,4 +50,20 @@ char ***parseArgs(int argc, char **argv)
     arrOfArgvs[1][valuesCounter] = '\0';
 
     return arrOfArgvs;
+}
+
+int getCipher(char **argv)
+{
+    size_t i;
+    for (i = 0; argv[i] != '\0'; i++)
+    {
+        if (!strcmp(argv[i], "-ceaser"))
+        {
+            return CEASER_CIPHER;
+        }
+        if (!strcmp(argv[i], "-atbash"))
+        {
+            return ATBASH_CIPHER;
+        }
+    }
 }
