@@ -66,4 +66,5 @@ int getCipher(char **argv)
             return ATBASH_CIPHER;
         }
     }
+    return UNKNOWN_CIPHER;
 }

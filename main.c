@@ -3,6 +3,8 @@
 #include "checker.h"
 #include "handler.h"
 
+void freeMemory();
+
 int main(int argc, char **argv)
 {
 	int realArgc = getRealArgc(argv);
@@ -40,9 +42,17 @@ int main(int argc, char **argv)
 		return UKNOWN;
 	}
 	char *inp = malloc(1024);
-	strcpy(inp, argv[1]);
-	// int key = atoi(argv[2]);
-	char *ciph = atbash(inp);
+	strcpy(inp, valuesArgv[0]);
+	char *ciph = NULL;
+	if (verifier == CEASER_CIPHER)
+	{
+		int key = atoi(valuesArgv[1]);
+		ciph = ceaser(inp, key);
+	}
+	else if (verifier == ATBASH_CIPHER)
+	{
+		ciph = atbash(inp);
+	}
 	puts(ciph);
 
 	free(optionsArgv);

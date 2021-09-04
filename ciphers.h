@@ -5,6 +5,7 @@
 
 enum Ciphers
 {
+	UNKNOWN_CIPHER,
 	CEASER_CIPHER,
 	ATBASH_CIPHER
 };

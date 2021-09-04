@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdarg.h>
 #include "ciphers.h"
 #include "handler.h"
 #include "checker.h"

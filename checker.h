@@ -9,18 +9,17 @@
 #define INVALID_NUMBER_OF_ARGUMENTS -1
 #define WRONG_ARGUMENTS_TYPE -2
 #define LARGE_INPUT -3
-#define UNKNOWN_CIPHER -4
 #define UNSUPPORTED_KEY -5
 //Assert number of passed arguments is enough
 #define ASSERT_ARGC(ARGC, B) \
     if (ARGC < B)            \
         return INVALID_NUMBER_OF_ARGUMENTS;
 //Assert the string is only numbers for atoi()
-#define ASSERT_NUM(A)                               \
+#define ASSERT_NUM(A)                                 \
     for (size_t Iter_ = 0; A[Iter_] != '\0'; Iter_++) \
-    {                                               \
-        if (!isdigit(A[Iter_]))                     \
-            return WRONG_ARGUMENTS_TYPE;            \
+    {                                                 \
+        if (!isdigit(A[Iter_]))                       \
+            return WRONG_ARGUMENTS_TYPE;              \
     }
 //Assert number is negative/positive
 #define ASSERT_SIGN(NUM, SIGN)  \
