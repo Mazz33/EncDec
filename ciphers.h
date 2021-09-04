@@ -12,7 +12,8 @@ enum Ciphers
 
 //returns a new string, does not alter the passed string. This is due to changing memory size incase replacement was bigger.
 char *replace_str(char *, char *, char *);
-char *ceaser(char *, int);
+char *ceaserEnc(char *, int);
+char *ceaserDec(char *, int);
 char *atbash(char *);
 char *rot13(char *);
 
