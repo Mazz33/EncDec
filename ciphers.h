@@ -16,6 +16,7 @@ char *ceaserEnc(char *, int);
 char *ceaserDec(char *, int);
 char *atbashEnc(char *);
 char *atbashDec(char *);
-char *rot13(char *);
+char *rot13Enc(char *);
+char *rot13Dec(char *);
 
 #endif
