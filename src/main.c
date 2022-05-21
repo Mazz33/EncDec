@@ -3,8 +3,6 @@
 #include "../headers/checker.h"
 #include "../headers/handler.h"
 
-void freeMemory();
-
 int main(int argc, char **argv)
 {
 	int realArgc = getRealArgc(argv);
