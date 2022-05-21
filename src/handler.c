@@ -1,4 +1,4 @@
-#include "../headers/headers.h"
+#include "../headers/handler.h"
 
 // Get the argument count of passed values without program arguments
 int getRealArgc(char **argv)
