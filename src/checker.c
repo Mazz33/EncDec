@@ -1,5 +1,5 @@
-#include "checker.h"
-#include "ciphers.h"
+#include "../headers/checker.h"
+#include "../headers/ciphers.h"
 
 int verifyArg(int argc, char **argv, int cipher)
 {

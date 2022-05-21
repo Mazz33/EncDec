@@ -1,7 +1,7 @@
-#include "headers.h"
-#include "ciphers.h"
-#include "checker.h"
-#include "handler.h"
+#include "../headers/headers.h"
+#include "../headers/ciphers.h"
+#include "../headers/checker.h"
+#include "../headers/handler.h"
 
 void freeMemory();
 

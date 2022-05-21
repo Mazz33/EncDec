@@ -1,4 +1,4 @@
-#include "ciphers.h"
+#include "../headers/ciphers.h"
 
 char *replace_str(char *baseStr, char *pattern, char *replacement)
 {
@@ -7,7 +7,7 @@ char *replace_str(char *baseStr, char *pattern, char *replacement)
     if (!strlen(baseStr) || !strlen(pattern))
         return '\0';
 
-    char *result = malloc(1024); //TODO: calculate result size needed.
+    char *result = malloc(1024); // TODO: calculate result size needed.
     if (!replacement)
         replacement = "";
     int shouldReplace = FALSE;

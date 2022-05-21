@@ -1,6 +1,6 @@
-#include "handler.h"
+#include "../headers/headers.h"
 
-//Get the argument count of passed values without program arguments
+// Get the argument count of passed values without program arguments
 int getRealArgc(char **argv)
 {
     int realArgc = 0;
@@ -20,7 +20,7 @@ char ***parseArgs(int argc, char **argv)
         return '\0';
     }
     size_t arraySize = sizeof(char *) * argc;
-    char ***arrOfArgvs = malloc(arraySize * 2); //a 2d array containing 2 arrays, first is the command line options, second is values passed to give to the verifier
+    char ***arrOfArgvs = malloc(arraySize * 2); // a 2d array containing 2 arrays, first is the command line options, second is values passed to give to the verifier
     arrOfArgvs[0] = malloc(arraySize);
     arrOfArgvs[1] = malloc(arraySize);
     if (!arrOfArgvs)
