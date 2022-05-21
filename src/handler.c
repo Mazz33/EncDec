@@ -6,8 +6,13 @@ int getRealArgc(char **argv)
     int realArgc = 0;
     for (size_t i = 0; argv[i] != '\0'; i++)
     {
-        if (argv[i][0] == '-')
+        int stopParsing = FALSE;
+        if (argv[i][0] == '-' && stopParsing != TRUE)
+        {
+            if (argv[i][1] == '-') // Incase we get -- then everything to come is a real option.
+                stopParsing = TRUE;
             continue;
+        }
         realArgc++;
     }
     return realArgc;
