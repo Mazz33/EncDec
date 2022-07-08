@@ -40,6 +40,17 @@ char ***parseArgs(int argc, char **argv)
     {
         if (argv[i][0] == '-')
         {
+            if (argv[i][1] == '-')
+            {
+                // We got a --. Don't do any more useless checks. Loop over what is left and add them all to values array. And break after
+                for (; argv[i] != '\0'; i++)
+                {
+                    arrOfArgvs[1][valuesCounter] = malloc(strlen(argv[i]) + 1);
+                    strcpy(arrOfArgvs[1][valuesCounter], argv[i]);
+                    valuesCounter++;
+                }
+                break;
+            }
             arrOfArgvs[0][optionsCounter] = malloc(strlen(argv[i]) + 1);
             strcpy(arrOfArgvs[0][optionsCounter], argv[i]);
             optionsCounter++;
